@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head>
+    <title>Test</title>
+    <script>
+        function getanswer()
+        {
+            document.getElementById(UserAnswers).innerHTML="";
+            var e=document.getElementsByName('input');
+            for(i=0; i<=e.length; i++)
+            {
+                if(e[i].type=="radio")
+                {
+                    if(e[i].checked)
+                    {
+                        document.getElementById(UserAnswers).innerHTML+="Q "+e[i].name+" The Answer You Are Selected is :"+e[i].value+"<br/>";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <h1>Online servey</h1>
+        
+        <!-- <input type="radio"> -->
+    </center>
+        <div style="padding-left: 30px;">
+            {% for result in Test %}
+            <table>
+                <tr>
+                    <td>{{result.no}} ) {{result.question}}</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" id="option1" name="{{result.no}}" value="{{result.option1}}">{{result.option1}}</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" id="option2" name="{{result.no}}" value="{{result.option2}}">{{result.option2}}</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" id="option3" name="{{result.no}}" value="{{result.option3}}">{{result.option3}}</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" id="option4" name="{{result.no}}" value="{{result.option4}}">{{result.option4}}</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" id="option5" name="{{result.no}}" value="{{result.option5}}">{{result.option5}}</td>
+                </tr>
+                <tr>
+                    <td><label id="corans" style="display:none; color:green;"><b>{{result.corans}}</b></label></td>
+                </tr>
+                <hr/>
+            </table>            
+            {% endfor %}
+            <hr/>
+            <input type="submit" value="Click For Result" id="but1" onclick="getanswer"/>
+            <b id="UserAnswers"></b>
+            <hr/>
+        </div>
+</body>
